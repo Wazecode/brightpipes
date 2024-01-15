@@ -15,7 +15,7 @@ function GameOverScreen2(width, height, screenController, score) {
     this.GAME_OVER_LOCATION = new Vector(0, 35);
     this.MAIN_MENU_LOCATION = new Vector(0, 385);
     this.PLAY_AGAIN_LOCATION = new Vector(0, 385);
-    this.SUBMIT_LOCATION = new Vector(0, 285);
+    // this.SUBMIT_LOCATION = new Vector(0, 285);
 
     this.playAgainButton = new Button("Play Again", function () {
         screenController.setScreen(new GameScreen(width, height, screenController));
@@ -25,9 +25,9 @@ function GameOverScreen2(width, height, screenController, score) {
         screenController.setScreen(new MenuScreen(width, height, screenController));
     });
     
-    this.submitButton = new Button("Submit Score", function() {
-        screenController.setScreen(new SubmitScoreScreen(width, height, screenController, score));
-    });
+    // this.submitButton = new Button("Submit Score", function() {
+    //     screenController.setScreen(new SubmitScoreScreen(width, height, screenController, score));
+    // });
     
     this.lastActiveControl = null;
 
@@ -51,7 +51,7 @@ GameOverScreen2.prototype.correctLayout = function () {
     
     this.PLAY_AGAIN_LOCATION.x = ((this.width - this.playAgainButton.getBounds().width) / 2) - 100;
     this.MAIN_MENU_LOCATION.x = ((this.width - this.mainMenuButton.getBounds().width) / 2) + 100;
-    this.SUBMIT_LOCATION.x = ((this.width - this.submitButton.getBounds().width) / 2);
+    // this.SUBMIT_LOCATION.x = ((this.width - this.submitButton.getBounds().width) / 2);
 };
 
 /**
@@ -82,7 +82,7 @@ GameOverScreen2.prototype.draw = function (g, x, y) {
                            
     this.playAgainButton.draw(g, x + this.PLAY_AGAIN_LOCATION.x, y + this.PLAY_AGAIN_LOCATION.y);
     this.mainMenuButton.draw(g, x + this.MAIN_MENU_LOCATION.x, y + this.MAIN_MENU_LOCATION.y);
-    this.submitButton.draw(g, x + this.SUBMIT_LOCATION.x, y + this.SUBMIT_LOCATION.y);
+    // this.submitButton.draw(g, x + this.SUBMIT_LOCATION.x, y + this.SUBMIT_LOCATION.y);
 
 };
 
@@ -117,8 +117,8 @@ GameOverScreen2.prototype.onMouseMove = function (location) {
         selectedControl = this.playAgainButton;
     else if (this.mainMenuButton.getBounds().add(this.MAIN_MENU_LOCATION).contains(location))
         selectedControl = this.mainMenuButton;
-    else if (this.submitButton.getBounds().add(this.SUBMIT_LOCATION).contains(location))
-        selectedControl = this.submitButton;
+    // else if (this.submitButton.getBounds().add(this.SUBMIT_LOCATION).contains(location))
+    //     selectedControl = this.submitButton;
 
     if (selectedControl !== this.lastActiveControl) {
         if (this.lastActiveControl !== null)
